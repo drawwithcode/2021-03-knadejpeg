@@ -47,6 +47,34 @@ function draw() {
 
   background(33,23,70);
 
+  // ellipse that moves with music
+  let vol = analyzer.getLevel();
+  noFill();
+  stroke(255);
+  strokeWeight(0.5);
+  ellipse(windowWidth / 2, windowHeight / 2, 350 + vol * 100, 350 + vol * 100 );
+ 
+  // text
+  let myText1 = "let'sspin!";
+  push();
+  translate (windowWidth/2, windowHeight/2);
+  drawingContext.font = "360px Satisfy";
+  fill("#EDFF86");
+  text(myText1, 0, 60)
+  pop();
+
+  let myText2 = "click to play music";
+  drawingContext.font = "24px Bebas Neue";
+  drawingContext.textAlign = "center";
+  fill("#EDFF86");
+  text(myText2, width/2, height/12)
+ 
+  let myText3 = "use arrows or return to interact";
+  drawingContext.font = "24px Bebas Neue";
+  drawingContext.textAlign = "center";
+  fill("#EDFF86");
+  text(myText3, width/2, height/12*11)
+
   push();
   // image rotation 
   translate(width / 2, height / 2);
@@ -85,43 +113,17 @@ if  (keyIsDown (RETURN)) {
 
   // stars' background and animation
   for (let i = 0; i < 100; i++) {
-    let randomSize = random(minSize, maxSize)
-    let randomX = random(width)
-    let randomY = random(height)
-    let opacity = map(randomSize, minSize, maxSize, minOpacity, maxOpacity)
-    noStroke()
-    fill(255,255,255,opacity)
-    ellipse(randomX, randomY, randomSize, randomSize)   
+  let randomSize = random(minSize, maxSize)
+  let randomX = random(width)
+  let randomY = random(height)
+  let opacity = map(randomSize, minSize, maxSize, minOpacity, maxOpacity)
+  noStroke()
+  fill(255,255,255,opacity)
+  ellipse(randomX, randomY, randomSize, randomSize)   
   }
- 
-  // ellipse that moves with music
-  let vol = analyzer.getLevel();
-  noFill();
-  stroke(255);
-  strokeWeight(0.5);
-  ellipse(windowWidth / 2, windowHeight / 2, 350 + vol * 100, 350 + vol * 100 );
 
-  // text
-  let myText = "let's spin!";
-  drawingContext.font = "italic bold 120px Satisfy";
-  drawingContext.textAlign = "center";
-  fill("#EDFF86");
-  text(myText, width/2, height/2)
+
 }
-
-/*
-  let myText2 = "click to play music";
-  drawingContext.font = "italic bold 120px Satisfy";
-  drawingContext.textAlign = "center";
-  fill("#EDFF86");
-  text(myText, width/2, height/2)
-
-  let myText3 = "use arrows and return to interact";
-  drawingContext.font = "italic bold 120px Satisfy";
-  drawingContext.textAlign = "center";
-  fill("#EDFF86");
-  text(myText, width/2, height/2)
-  */
 
 
 // to let music start
@@ -130,5 +132,7 @@ function mousePressed() {
     mySong.stop();
   } else {
     mySong.play();
+    mySong.volume(0.3);
   }
 }
+
