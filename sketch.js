@@ -19,10 +19,8 @@ let analyzer
 // image variables
 let myImage = []
 let i = 0
-i = Math.floor(Math.random() * myImage.length);
 
 // button variable
-let button1
 
 
 function preload(){
@@ -65,23 +63,23 @@ function draw() {
 
   // interact to change characters
   if  (keyIsDown (RIGHT_ARROW)) {
-  i = 1
+  i = 1;
   } 
 
   if  (keyIsDown (LEFT_ARROW)) {
-  i = 2
+  i = 2;
   } 
 
 if  (keyIsDown (UP_ARROW)) {
-  i = 3
+  i = 3;
   } 
  
 if  (keyIsDown (DOWN_ARROW)) {
-  i = 4
+  i = 4;
   } 
 
 if  (keyIsDown (RETURN)) {
-  i = 0
+  i = 0;
   } 
 
 
@@ -104,12 +102,13 @@ if  (keyIsDown (RETURN)) {
   ellipse(windowWidth / 2, windowHeight / 2, 350 + vol * 100, 350 + vol * 100 );
 
   // text
-  let myText1 = "let's spin!";
+  let myText = "let's spin!";
   drawingContext.font = "italic bold 120px Satisfy";
   drawingContext.textAlign = "center";
   fill("#EDFF86");
   text(myText, width/2, height/2)
-  
+}
+
 /*
   let myText2 = "click to play music";
   drawingContext.font = "italic bold 120px Satisfy";
@@ -123,7 +122,7 @@ if  (keyIsDown (RETURN)) {
   fill("#EDFF86");
   text(myText, width/2, height/2)
   */
-} 
+
 
 // to let music start
 function mousePressed() {
